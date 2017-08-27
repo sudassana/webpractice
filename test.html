@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<meta charset="utf-8">
+<meta name="viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet" />
+
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>My First Heading</h1>
+<p title="THis is a tooltip!">My first paragraph.<br> and it contains a link,. check it out!</p>
+<a href="https://google.com.au"> This is a link</a>
+<h2>My Second Heading</h2>
+<p>My second paragraph with some <br> 
+page breaking! hehe</p>
+<h3>My Third Heading</h3>
+<p>My third paragraph <br> this paragraph contains an image.</p>
+<img src="Images/image1.jpg" alt="image1.jpg" height="150" width="300">
+<p>Below is a preformatted text for god knows what lol</p>
+ <pre>
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+</pre>
+<h4>FORMATTING</h4>
+<p>Okay, its time to learn text formatting</p>
+<p>Firstly, let's start making <b>bold</b> text <br> and then some <i>italics!</i><br>and of course for <del>corectingg</del> correcting words!</p>
+<p>How to create a <del>quatation</del> quotation? <br>Here's how! <q>This is a quotation.</q></p>
+<h5>MAPBOX EXAMPLE</h5>
+<p>I hope it's working lol, lets try it</p>
+
+<div id="map" style="width: 500px; height: 500px;"></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3VkYXNzYW5hIiwiYSI6ImNqNnV4M3RhZDB1cnYycXJwM3pjbTdrYmYifQ.T6i_IfKswKrUNMbt1d6TEg';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [151.21067, -33.890082], // starting position
+    zoom: 5 // starting zoom
+});
+
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
+</script>
+
+
+</body>
+</html>
