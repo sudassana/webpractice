@@ -31,17 +31,16 @@ footer {
 }
 
 .topnav{
-	position: fixed;
 	top: 0;
 	width: 100%;
-	background: #FFFFFF;
+	background: #0026ca;
 	overflow: hidden;
 }
 
 .topnav a {
 	float: left;
 	display: block;
-	color: black;
+	color: white;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
@@ -50,11 +49,11 @@ footer {
 }
 
 .topnav a:hover {
-	background-color: black;
+	background-color: #304ffe;
 	color: white;	
 }
 
 .topnav a.active {
-    background-color: black;
+    background-color: #304ffe;
     color: white;
 }

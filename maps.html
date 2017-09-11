@@ -7,7 +7,6 @@
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
-	<script src="data.js"></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
@@ -37,36 +36,36 @@ map.addControl(new mapboxgl.NavigationControl());
 map.on('load', function() {
 
     map.addLayer({
-        'id': 'data extrusion',
+        'id': 'data',
         'type': 'fill-extrusion',
         'source': {
             // Geojson Data source used in vector tiles, documented at
             // https://gist.github.com/ryanbaumann/a7d970386ce59d11c16278b90dde094d
             'type': 'geojson',
-            'data': 'data.js'
+            'data': 'NSW.geojson'
         },
         'paint': {
             // See the Mapbox Style Spec for details on property functions
             // https://www.mapbox.com/mapbox-gl-style-spec/#types-function
             'fill-extrusion-color': {
                 // Get the fill-extrusion-color from the source 'color' property.
-                'property': 'uni_ori',
+                'property': 'uni16_diff',
                 'stops': [
 					[0, "black"],
-					[1000, "blue"]
+					[1000, "green"]
 					]
             },
             'fill-extrusion-height': {
                 // Get fill-extrusion-height from the source 'height' property.
-                'property': 'uni_diff',
+                'property': 'uni_prop',
                 'stops': [
 					[0.2,0],
-					[1,65535]
+					[1,5000]
 				]
             },
             'fill-extrusion-base': 0,
             // Make extrusions slightly opaque for see through indoor walls.
-            'fill-extrusion-opacity': 0.9
+            'fill-extrusion-opacity': 0.7
        	}
     });
 });
