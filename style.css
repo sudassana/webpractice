@@ -29,12 +29,16 @@ footer {
 	font-size: 18px;
 	font-family: 'Roboto Mono', monospace;
 }
-
+.main{
+	margin-top: 70px;
+	width: 100%;
+}
 .topnav{
 	top: 0;
 	width: 100%;
 	background: #0026ca;
 	overflow: hidden;
+	position: fixed;
 }
 
 .topnav a {
