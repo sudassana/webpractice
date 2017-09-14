@@ -4,23 +4,16 @@ body {
 	color: #1D1D1D;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
-	font-size: 25px;
+	font-size: 18px;
 }
 
-h1 {
-	font-family: 'Roboto Condensed', sans-serif;
-	border-style: solid;
-	border-width: 5px;
-	border-color: black;
-	padding: 0.5px;
-	width: 35%;
-	height: 10%;
-	margin: auto;	
+h2 {
+	font-family: 'Roboto'; font-weight: 700;
 }
 
 p {
 	font-size: 18px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto:', sans-serif;
 
 }
 
@@ -28,7 +21,7 @@ footer {
 	position: fixed;
 	bottom: 0;
 	font-size: 18px;
-	font-family: 'Roboto Mono', monospace;
+	font-family: 'Roboto ', sans-serif;
 }
 .main{
 	margin-top: 50px;
@@ -37,10 +30,12 @@ footer {
 .topnav{
 	top: 0;
 	width: 100%;
+	transition: top 0.2s ease-in-out;
 	background: #003c8f;
-	overflow: hidden;
+/*	overflow: hidden;*/
 	position: fixed;
 	display: block;
+	height: 50px
 }
 
 .topnav a {
@@ -56,11 +51,16 @@ footer {
 
 .topnav a:hover {
 	background-color: #5e92f3;
-	color: white;	
+	color: white;
+	display: block
 }
 
 .topnav .icon {
   display: none;
+}
+
+.nav-up {
+  top: -50px;
 }
 
 @media screen and (max-width: 640px) {
@@ -72,7 +72,7 @@ footer {
 }
 
 @media screen and (max-width: 640px) {
-  .topnav.responsive {position: relative;}
+  .responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -81,7 +81,7 @@ footer {
   .topnav.responsive a {
     float: none;
     display: block;
-    text-align: left;
+    text-align: right;
 	}
 }
 
@@ -90,16 +90,20 @@ footer {
     position: fixed; /* Fixed/sticky position */
     bottom: 25px; /* Place the button at the bottom of the page */
     right: 30px; /* Place the button 30px from the right */
-    z-index: 99; /* Make sure it does not overlap */
+    z-index: 100; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
     background-color: #f50057; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 12px; /* Some padding */
-    border-radius: 100px; /* Rounded corners */
+    padding: 15px; /* Some padding */
+    border-radius: 50px; /* Rounded corners */
 }
 
 #myBtn:hover {
     background-color: #ff5983; /* Add a dark-grey background on hover */
+}
+
+button {
+	color: #f50057;
 }

@@ -10,7 +10,7 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position: absolute; top: 0; bottom: 0; width:70%}
+        #map { position: absolute; top: 0; bottom: 0; width:100%}
     </style>
 </head>
 <body>
@@ -25,7 +25,7 @@ var map = new mapboxgl.Map({
 	container: 'map', // container id
 	style: 'mapbox://styles/sudassana/cj6vnglfg476e2rnyd4g1kq61', // stylesheet location
 	center: [151.209900, -33.865143], // starting position [lng, lat]
-	zoom: 9, // starting zoom
+	zoom: 10, // starting zoom
     pitch: 40,
     bearing: 20
 });
@@ -64,7 +64,7 @@ map.on('load', function() {
                 'property': 'uni_prop',
                 'stops': [
 					[0.2,0],
-					[1,5000]
+					[1,8000]
 				]
             },
             'fill-extrusion-base': 0,

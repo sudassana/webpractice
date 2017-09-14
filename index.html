@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -9,18 +9,54 @@
 <title>CODE 1230</title>
 </head>
 
-
-<body>
-
-<div class="topnav" id="mytopnav">
+<header class="nav-down" id="navbar">
 <a title="Return to Homepage" href="index.html"><i class="material-icons">home</i></a>
-<a title="Scroll down to Mapbox" href="maps.html">Mapbox</a>
+<a title="Go to Mapbox" href="maps.html" target="_blank">Mapbox</a>
 <a title="Scroll down to Chart" href="#chart_page">Chart</a>
-<a title="Scroll down to Analysis" href="chart.html">Analysis</a>
+<a title="Scroll down to Analysis" href="#analysis_page">Analysis</a>
 <!--<a title="Change to dark mode" href="mode.html" style="float: right"><i class="material-icons">brightness_4</i></a>-->
 <a title="Go to Github" href="https://github.com/sudassana/" style="float: right" target="_blank">About Us</a>
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-</div>
+	</header>
+<script>
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('header').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+    
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('header').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('header').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+    
+   
+</script>
+<body>
 
 <script>
 function myFunction() {
@@ -35,8 +71,11 @@ function myFunction() {
 
 <div class="main" id="mymain">
 <img src="Images/welcome.jpg" alt="home" style="width: 100%">
-<h2>Hi there!</h2>
 
+<a href="#welcome" class="button"><i class="material-icons">arrow_drop_down</i></a>
+
+<a id="welcome"></a>
+<h2>Hi there!</h2>
 <p>Paragraph text here <br><br>
 Hello World. <br><br>
 Blablablablablablablablablablablabla!!
@@ -61,9 +100,38 @@ Integer elit odio, convallis nec pellentesque finibus, elementum ac enim. Curabi
 
 
 <a id="chart_page"></a>
-<h6>Charts</h6>
 <img src="Images/charts.jpg" alt="charts" style="width: 100%">
+
+<a id="analysis_page"></a>
+<h7>Analysis</h7>
+<p>For the analysis, i have no clue :) <br><br> 
+so here i give you some placeholder text HAHAHA: <br><br>
+Cras interdum placerat fringilla. Cras imperdiet erat cursus nibh maximus bibendum. Fusce sodales maximus mauris, et rhoncus purus congue non. Suspendisse finibus justo lectus, ut placerat orci pulvinar eu. Suspendisse pulvinar imperdiet lacus, et ornare purus egestas ut. Donec tincidunt mauris ullamcorper dolor condimentum pellentesque. Vestibulum sed urna in lorem dapibus volutpat. Morbi at leo vitae est tincidunt elementum. Ut rutrum a velit consectetur dictum.
+
+Vivamus non dolor leo. Phasellus id ex placerat, elementum mi in, tristique tellus. Fusce suscipit lacus velit, non tempus nisi finibus ac. Ut eget finibus nisl, et dictum sapien. Mauris ex dolor, dapibus non dictum tincidunt, mattis varius leo. Duis ornare, arcu a tincidunt elementum, magna sem convallis mauris, sit amet sollicitudin nulla ligula eu elit. Integer pretium finibus auctor. Aliquam a augue sed tortor feugiat posuere ac quis velit. Curabitur id sollicitudin quam. Curabitur at purus vel diam cursus rhoncus. Mauris non enim dui.</p>
 </div>
+
+<h8>Conclusion</h8>
+<p>Vivamus non dolor leo. Phasellus id ex placerat, elementum mi in, tristique tellus. Fusce suscipit lacus velit, non tempus nisi finibus ac. Ut eget finibus nisl, et dictum sapien. Mauris ex dolor, dapibus non dictum tincidunt, mattis varius leo. Duis ornare, arcu a tincidunt elementum, magna sem convallis mauris, sit amet sollicitudin nulla ligula eu elit. Integer pretium finibus auctor. Aliquam a augue sed tortor feugiat posuere ac quis velit. Curabitur id sollicitudin quam. Curabitur at purus vel diam cursus rhoncus. Mauris non enim dui.</p>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="material-icons">arrow_upward</i></button>
+<script>
+	// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+    document.documentElement.scrollTop = 0; // For IE and Firefox
+} </script>
 </body>
 
 </html>
