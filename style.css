@@ -1,8 +1,9 @@
 body {
-	background: white;
+	margin: 0px;
+	background: #eeeeee;
 	color: #1D1D1D;
 	text-align: center;
-	font-family: Helvetica;
+	font-family: 'Roboto', sans-serif;
 	font-size: 25px;
 }
 
@@ -30,15 +31,16 @@ footer {
 	font-family: 'Roboto Mono', monospace;
 }
 .main{
-	margin-top: 70px;
+	margin-top: 50px;
 	width: 100%;
 }
 .topnav{
 	top: 0;
 	width: 100%;
-	background: #0026ca;
+	background: #003c8f;
 	overflow: hidden;
 	position: fixed;
+	display: block;
 }
 
 .topnav a {
@@ -53,11 +55,51 @@ footer {
 }
 
 .topnav a:hover {
-	background-color: #304ffe;
+	background-color: #5e92f3;
 	color: white;	
 }
 
-.topnav a.active {
-    background-color: #304ffe;
-    color: white;
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+	}
+}
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 25px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #f50057; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 12px; /* Some padding */
+    border-radius: 100px; /* Rounded corners */
+}
+
+#myBtn:hover {
+    background-color: #ff5983; /* Add a dark-grey background on hover */
 }

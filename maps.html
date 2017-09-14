@@ -4,14 +4,13 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="maps.css">
     <meta charset="utf-8" />
-    <title></title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <title>G15 Mapbox</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=yes' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:75%; }
-		sidebar {position: fixed; left: 80%; padding: 1%; text-align: right}
+        #map { position: absolute; top: 0; bottom: 0; width:70%}
     </style>
 </head>
 <body>
@@ -30,7 +29,8 @@ var map = new mapboxgl.Map({
     pitch: 40,
     bearing: 20
 });
-	
+
+map.addControl(new mapboxgl.FullscreenControl());
 map.addControl(new mapboxgl.NavigationControl());
 }
 map.on('load', function() {
@@ -44,6 +44,7 @@ map.on('load', function() {
             'type': 'geojson',
             'data': 'NSW.geojson'
         },
+		
         'paint': {
             // See the Mapbox Style Spec for details on property functions
             // https://www.mapbox.com/mapbox-gl-style-spec/#types-function
@@ -70,15 +71,11 @@ map.on('load', function() {
             // Make extrusions slightly opaque for see through indoor walls.
             'fill-extrusion-opacity': 0.8
        	}
+		
+		
     });
 });
 </script>
-
-<sidebar>
-<h1>URBAN ANALYSIS</h1>
-<p><i>Based on Australian Census <b>2011/2016</b></i></p>
-<p><del>Blablablablablabla</del></p>
-</sidebar>
 
 </body>
 </html>
