@@ -1,13 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <meta charset=utf-8 />
-  <title>NAME | Mapbox</title>
-  <link rel='shortcut icon' href='path/to/favicon.ico' type='image/x-icon' />
-  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:200,300,400,700" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="maps.css">
+    <meta charset="utf-8" />
+    <title>G15 Mapbox</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=yes' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position: absolute; top: 0; bottom: 0; width:75%; height: 150%}
+    </style>
 </head>
 <body>
-  <!-- Content -->
+
+<div class="sidebar" style="width: 25%;float: right">
+	<h1>The Nine Questions</h1>
+	<h2>What is a dataset?</h2>
+	<p>A collection of related sets of information that is composed of separate elements but can be manipulated as a unit by a computer.</p>
+	<h3>Why is it collected?</h3>
+	<p>To examine specific information based on location, gender, age, etc.</p>
+	<h4>Which government sector will use the dataset?</h4>
+	<p>Department of Health, Employment, Education, Immigration, and many more.</p>
+	<h5>Which private sector will use the dataset?</h5>
+	<p>Real Estate, Businesses, Commercial job listing.</p>
+	<h6>How is the 2011 dataset make any impact?</h6>
+	<p>The data from 2011 helped the goverment to make changes and there are evidences from the 2016 census.</p>
+	<h6>How is this dataset change Sydney?</h6>
+	<p>Since the government learn any problems by examining the census, each goverment department will issue policies that could help to solve the problems</p>
+	<h4>How it will change from 2011 to 2016</h4>
+	<p>Through the result of the 2011 Census.</p>
+	<h5>How significant is it to people lives?</h5>
+	<p>By conducting census every five years, people can understand the current situation in Australia and it can help them to make changes.</p>
+	<h3>How can it change people lives?</h3>
+	<p>Policies are made to improve people lives in many aspects, and those policies are created from the census data.</p>
+</div>
+
+<div id="map"></div>
+<div class='map-overlay' id='legend'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3VkYXNzYW5hIiwiYSI6ImNqNnV4M3RhZDB1cnYycXJwM3pjbTdrYmYifQ.T6i_IfKswKrUNMbt1d6TEg';
+if (!mapboxgl.supported()) {
+    alert('Your browser does not support Mapbox GL');
+} else {
+var map = new mapboxgl.Map({
+	container: 'map', // container id
+	style: 'mapbox://styles/sudassana/cj6vnglfg476e2rnyd4g1kq61', // stylesheet location
+	center: [151.209900, -33.865143], // starting position [lng, lat]
+	zoom: 10, // starting zoom
+    pitch: 40,
+    bearing: 20
+});
+
+map.addControl(new mapboxgl.FullscreenControl());
+map.addControl(new mapboxgl.NavigationControl());
+}
+map.on('load', function() {
+var layers=['-1.00-0','0-0.50','0.50-1.00','1.00-30.00'];
+var colors=['black','red','yellow','green','blue'];
+for (i = 0; i < layers.length; i++) {
+  var layer = layers[i];
+  var color = colors[i];
+  var item = document.createElement('div');
+  var key = document.createElement('span');
+  key.className = 'legend-key';
+  key.style.backgroundColor = color;
+
+  var value = document.createElement('span');
+  value.innerHTML = layer;
+  item.appendChild(key);
+  item.appendChild(value);
+  legend.appendChild(item);
+}	
+    map.addLayer({
+        'id': 'data',
+        'type': 'fill-extrusion',
+        'source': {
+            // Geojson Data source used in vector tiles, documented at
+            // https://gist.github.com/ryanbaumann/a7d970386ce59d11c16278b90dde094d
+            'type': 'geojson',
+            'data': 'NSW.geojson'
+        },
+		
+        'paint': {
+            // See the Mapbox Style Spec for details on property functions
+            // https://www.mapbox.com/mapbox-gl-style-spec/#types-function
+            'fill-extrusion-color': {
+                // Get the fill-extrusion-color from the source 'color' property.
+                'property': 'uni_diff',
+                'stops': [
+					[-1, "black"],
+					[0, "red"],
+					[0.5, "yellow"],
+					[1, "green"],
+					[30, "blue"]
+				]
+            },
+            'fill-extrusion-height': {
+                // Get fill-extrusion-height from the source 'height' property.
+                'property': 'uni_prop',
+                'stops': [
+					[0.2,0],
+					[1,10000]
+				]
+            },
+            'fill-extrusion-base': 0,
+            // Make extrusions slightly opaque for see through indoor walls.
+            'fill-extrusion-opacity': 0.8
+       	}
+		
+		
+    });
+});
+</script>
+
 </body>
 </html>

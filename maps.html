@@ -38,6 +38,7 @@
 </div>
 
 <div id="map"></div>
+<div class='map-overlay' id='legend'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3VkYXNzYW5hIiwiYSI6ImNqNnV4M3RhZDB1cnYycXJwM3pjbTdrYmYifQ.T6i_IfKswKrUNMbt1d6TEg';
 if (!mapboxgl.supported()) {
@@ -56,7 +57,22 @@ map.addControl(new mapboxgl.FullscreenControl());
 map.addControl(new mapboxgl.NavigationControl());
 }
 map.on('load', function() {
+var layers=['-1.00-0','0-0.50','0.50-1.00','1.00-30.00'];
+var colors=['black','red','yellow','green','blue'];
+for (i = 0; i < layers.length; i++) {
+  var layer = layers[i];
+  var color = colors[i];
+  var item = document.createElement('div');
+  var key = document.createElement('span');
+  key.className = 'legend-key';
+  key.style.backgroundColor = color;
 
+  var value = document.createElement('span');
+  value.innerHTML = layer;
+  item.appendChild(key);
+  item.appendChild(value);
+  legend.appendChild(item);
+}	
     map.addLayer({
         'id': 'data',
         'type': 'fill-extrusion',
