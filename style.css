@@ -59,7 +59,7 @@ h7 {
 }
 
 p {
-	padding-left: 100px; padding-right: 100px;
+	padding-left: 30px; padding-right: 30px;
 	margin: 0;
 	font-size: 18px;
 	font-family: 'Roboto'; font-weight: 500;
@@ -68,7 +68,7 @@ p {
 }
 
 p.par5,p.par6 {
-	padding-left: 100px; padding-right: 100px;
+	padding-left: 30px; padding-right: 30px;
 	margin-bottom: 20px;
 	font-size: 18px;
 	font-family: 'Roboto'; font-weight: 500;
