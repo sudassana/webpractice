@@ -1,62 +1,24 @@
 <!DOCTYPE html>
 <html>
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:200,300,400,700" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <head>
 <title>CODE 1230</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<header class="nav-down" id="navbar">
+<div class="topnav" id="myTopnav">
 <a title="Return to Homepage" href="index.html"><i class="material-icons">home</i></a>
 <a title="Go to Mapbox" href="maps.html" target="_blank">Mapbox</a>
-<a title="Scroll down to Chart" href="#chart_page">Chart</a>
 <a title="Scroll down to Analysis" href="#analysis_page">Analysis</a>
+<a title="Scroll down to Chart" href="#chart_page">Chart</a>
 <!--<a title="Change to dark mode" href="mode.html" style="float: right"><i class="material-icons">brightness_4</i></a>-->
-<a title="Go to Github" href="https://github.com/sudassana/" style="float: right" target="_blank">About Us</a>
+<a title="Go to Github" href="https://github.com/sudassana/" target="_blank">About Us</a>
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-	</header>
-<script>
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = $('header').outerHeight();
-
-$(window).scroll(function(event){
-    didScroll = true;
-});
-
-setInterval(function() {
-    if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-    }
-}, 250);
-
-function hasScrolled() {
-    var st = $(this).scrollTop();
-    
-    // Make sure they scroll more than delta
-    if(Math.abs(lastScrollTop - st) <= delta)
-        return;
-    
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight){
-        // Scroll Down
-        $('header').removeClass('nav-down').addClass('nav-up');
-    } else {
-        // Scroll Up
-        if(st + $(window).height() < $(document).height()) {
-            $('header').removeClass('nav-up').addClass('nav-down');
-        }
-    }
-    
-   
-</script>
-<body>
+</div>
 
 <script>
 function myFunction() {
@@ -69,50 +31,81 @@ function myFunction() {
 }
 </script>
 
+<body>
+
 <div class="main" id="mymain">
 <img src="Images/welcome.jpg" alt="home" style="width: 100%">
 
-<a href="#welcome" class="button"><i class="material-icons">arrow_drop_down</i></a>
+<script>
+// SMOOTH TRANSITION
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+	</script>
 
-<a id="welcome"></a>
-<h2>Hi there!</h2>
-<p>Paragraph text here <br><br>
-Hello World. <br><br>
-Blablablablablablablablablablablabla!!
+<!--<a id="welcome"></a>-->
+<h1>Hi there, welcome to our website!</h1>
+<p class="par1">
+Made specifically for this assignment only.
 </p>
 
-<h3>About Data Visualisation</h3>
-<p>So, this assignment is required us to to some analysis from the Australian Census from 2011 and 2016</p>
+<p class="par2">
+	Scroll down and enjoy ;) 
+</p>
+
+<h2>About Data Visualisation</h2>
+<p>So, this assignment is required us to to some analysis from the Australian Census from 2011 and 2016. In order for us to represent the data from the Census, we retrieved the datapacks in form of .csv and .shp files from Australian Bureau of Statistics and process it through QGIS. The processed data from QGIS then exported into Mapbox, an open source mapping platform. Click 'Mapbox' in the navigation bar above to take a look at it. </p>
 
 
-<h4>Census?</h4>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque, turpis at ornare vehicula, nunc nunc scelerisque lectus, non interdum purus ligula nec dolor. Duis a nisl vulputate, pharetra lacus nec, pulvinar orci. Aliquam posuere convallis consequat. Ut vehicula sem pulvinar mauris sodales auctor. Duis quis nunc consectetur, aliquet mi ac, gravida arcu. Duis ut neque accumsan turpis faucibus malesuada. Sed ac augue et diam fermentum auctor ac vitae est. Proin eget metus semper, tincidunt tortor malesuada, scelerisque arcu. Nullam et lectus metus. Mauris nec eros maximus, accumsan lacus ut, dictum sem. Cras sit amet maximus quam, hendrerit efficitur nulla. Mauris ac varius orci. Donec sollicitudin sagittis magna, a fringilla odio. Curabitur purus leo, commodo vel odio id, tempor dignissim felis.
-
-Sed sollicitudin, lorem ac mollis pulvinar, mauris metus aliquam ex, nec suscipit elit nisl nec enim. Pellentesque at tincidunt magna. Curabitur iaculis faucibus leo, nec lacinia nulla gravida ac. Integer pharetra metus posuere tellus lacinia scelerisque. Curabitur viverra purus urna, id ullamcorper orci elementum eu. Sed ac massa lectus. Nullam laoreet velit non massa consectetur, mollis lobortis felis pellentesque. Aenean eu nisi leo. Sed semper tristique odio, sed ornare tortor imperdiet eget.
-
-Cras interdum placerat fringilla. Cras imperdiet erat cursus nibh maximus bibendum. Fusce sodales maximus mauris, et rhoncus purus congue non. Suspendisse finibus justo lectus, ut placerat orci pulvinar eu. Suspendisse pulvinar imperdiet lacus, et ornare purus egestas ut. Donec tincidunt mauris ullamcorper dolor condimentum pellentesque. Vestibulum sed urna in lorem dapibus volutpat. Morbi at leo vitae est tincidunt elementum. Ut rutrum a velit consectetur dictum.
-
-Vivamus non dolor leo. Phasellus id ex placerat, elementum mi in, tristique tellus. Fusce suscipit lacus velit, non tempus nisi finibus ac. Ut eget finibus nisl, et dictum sapien. Mauris ex dolor, dapibus non dictum tincidunt, mattis varius leo. Duis ornare, arcu a tincidunt elementum, magna sem convallis mauris, sit amet sollicitudin nulla ligula eu elit. Integer pretium finibus auctor. Aliquam a augue sed tortor feugiat posuere ac quis velit. Curabitur id sollicitudin quam. Curabitur at purus vel diam cursus rhoncus. Mauris non enim dui.
-
-Suspendisse sed suscipit quam, non vestibulum purus. Proin et feugiat nisi, ut mollis tortor. Nullam euismod consequat mauris. Integer eget placerat enim. Phasellus ac ante ac diam aliquam accumsan ullamcorper nec nisi. Donec tortor dolor, lacinia et metus sagittis, varius volutpat lacus. Donec ligula arcu, vestibulum at quam molestie, porta lacinia nunc. Sed fringilla tellus a ipsum convallis, eget tristique erat mattis. Nunc varius orci et finibus convallis. Donec nec ante in nibh sodales pellentesque sed consequat tortor.
-
-Integer elit odio, convallis nec pellentesque finibus, elementum ac enim. Curabitur sagittis massa quam, et mollis mi pretium eu. Nunc quis eros maximus, maximus sem a, vestibulum urna. Mauris risus urna, laoreet et lacus vel, iaculis mattis dui. Morbi nisi risus, faucibus sit amet convallis sed, suscipit eu tortor. Sed euismod vehicula urna vel iaculis. Nullam id eros ornare, scelerisque odio vel, interdum eros. Etiam ante nisi, sagittis in tincidunt vel, ullamcorper commodo elit. Mauris scelerisque magna sem. Sed.</p>
-
-
-<a id="chart_page"></a>
-<img src="Images/charts.jpg" alt="charts" style="width: 100%">
+<h3>What is Census?</h3>
+<p>The Australian Census is the largest form of information collecting conducted each 5 years by the Australian Bureau of Statistics (ABS). From the data it collected, it can tell the current situation such as population, income, immigration, etc. The gathered data then compiled based on the Australian Standard Geographica Classification (ASGS) which are: Statistical Area (SA1), SA2, SA3, SA4, State/Territory, and Australia.  
+</p>
 
 <a id="analysis_page"></a>
-<h7>Analysis</h7>
-<p>For the analysis, i have no clue :) <br><br> 
-so here i give you some placeholder text HAHAHA: <br><br>
+<h5>Analysis</h5>
+<p class="par5">
 Cras interdum placerat fringilla. Cras imperdiet erat cursus nibh maximus bibendum. Fusce sodales maximus mauris, et rhoncus purus congue non. Suspendisse finibus justo lectus, ut placerat orci pulvinar eu. Suspendisse pulvinar imperdiet lacus, et ornare purus egestas ut. Donec tincidunt mauris ullamcorper dolor condimentum pellentesque. Vestibulum sed urna in lorem dapibus volutpat. Morbi at leo vitae est tincidunt elementum. Ut rutrum a velit consectetur dictum.
 
 Vivamus non dolor leo. Phasellus id ex placerat, elementum mi in, tristique tellus. Fusce suscipit lacus velit, non tempus nisi finibus ac. Ut eget finibus nisl, et dictum sapien. Mauris ex dolor, dapibus non dictum tincidunt, mattis varius leo. Duis ornare, arcu a tincidunt elementum, magna sem convallis mauris, sit amet sollicitudin nulla ligula eu elit. Integer pretium finibus auctor. Aliquam a augue sed tortor feugiat posuere ac quis velit. Curabitur id sollicitudin quam. Curabitur at purus vel diam cursus rhoncus. Mauris non enim dui.</p>
 </div>
 
-<h8>Conclusion</h8>
-<p>Vivamus non dolor leo. Phasellus id ex placerat, elementum mi in, tristique tellus. Fusce suscipit lacus velit, non tempus nisi finibus ac. Ut eget finibus nisl, et dictum sapien. Mauris ex dolor, dapibus non dictum tincidunt, mattis varius leo. Duis ornare, arcu a tincidunt elementum, magna sem convallis mauris, sit amet sollicitudin nulla ligula eu elit. Integer pretium finibus auctor. Aliquam a augue sed tortor feugiat posuere ac quis velit. Curabitur id sollicitudin quam. Curabitur at purus vel diam cursus rhoncus. Mauris non enim dui.</p>
+<a id="chart_page"></a>
+<img src="Images/charts.jpg" alt="charts" style="width: 100%">
+
+<h6>Conclusion</h6>
+<p class="par6">Vivamus non dolor leo. Phasellus id ex placerat, elementum mi in, tristique tellus. Fusce suscipit lacus velit, non tempus nisi finibus ac. Ut eget finibus nisl, et dictum sapien. Mauris ex dolor, dapibus non dictum tincidunt, mattis varius leo. Duis ornare, arcu a tincidunt elementum, magna sem convallis mauris, sit amet sollicitudin nulla ligula eu elit. Integer pretium finibus auctor. Aliquam a augue sed tortor feugiat posuere ac quis velit. Curabitur id sollicitudin quam. Curabitur at purus vel diam cursus rhoncus. Mauris non enim dui.</p>
 
 <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="material-icons">arrow_upward</i></button>
 <script>
@@ -120,7 +113,7 @@ Vivamus non dolor leo. Phasellus id ex placerat, elementum mi in, tristique tell
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
         document.getElementById("myBtn").style.display = "block";
     } else {
         document.getElementById("myBtn").style.display = "none";
